@@ -50,3 +50,16 @@ export const deleteFavorite = async (req, res) => {
         })
         .catch((error) => res.status(500).json({ error: 'Манга не была удалена из избранного' }));
 }
+
+export const isFavouriteById = async (req, res) =>{
+    const favoriteId = req.params.id;
+
+    FavouriteManga.findById(favoriteId)
+        .then((favorite) => {
+            if (!favorite) {
+                return res.status(404).json({ error: "Избранная манга не найдена" });
+            }
+            res.status(200).json({ message: "Манга найдена" });
+        })
+        .catch((error) => res.status(500).json({ error: 'Манга не найдена в связи с ошибкой сервера' }));
+}

@@ -48,7 +48,7 @@ export const registerUser = async (req, res) =>{
     catch(err){
         console.log(err);
         res.status(500).json({
-            message: 'Не удалось зарегистрироваться'
+            message: 'Не удалось зарегистрироваться. Такая почта уже существует'
         });
     }
 }
