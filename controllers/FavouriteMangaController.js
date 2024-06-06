@@ -4,8 +4,9 @@ import FavouriteManga from "../models/FavouriteManga.js";
 export const getAllFavorites = async(req, res) =>{
     try{
         const favorites = await FavouriteManga.find().populate("manga");
-
+        console.log(favorites);
         res.json(favorites);
+
     }
     catch(err){
         res.status(500).json({
